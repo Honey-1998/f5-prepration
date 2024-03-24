@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h3>
+      Write 2 functions in the script tag:
+      <ol>
+        <li>
+          A primitiveMultiply function that in 20% of cases multiplies two
+          numbers and in other 80% of cases raises an exception of type
+          MultiplicatorUnitFailure.
+        </li>
+        <li>
+          Write a second function that wraps the first function and just keeps
+          trying untill a call succeeds after which it returns the result and
+          the number of attempts the first function took to produce a non error
+          output.
+        </li>
+      </ol>
+    </h3>
+    <br />
+    <h3>Make sure you handle only the exceptions you are trying to handle.</h3>
+    <br />
+    <h3>View the output in console.</h3>
+
+    <script>
+      class MultiplicatorUnitFailure extends Error {
+        constructor(msg) {
+          super(msg);
+        }
+      }
+
+      function primitiveMultiply(a, b) {
+        // Write first function here
+        let radomNum = Math.ceil(Math.random() * 10);
+
+        if (radomNum <= 2) return a * b;
+        else throw new MultiplicatorUnitFailure("MultiplicatorUnitFailure");
+      }
+
+      function reliableMultiply(a, b) {
+        // Write second function here
+        try {
+          return primitiveMultiply(a, b);
+        } catch (error) {
+          console.log("Error: " + error.message);
+          return reliableMultiply(a, b);
+        }
+      }
+      console.log(reliableMultiply(8, 8)); // → 64
+    </script>
+  </body>
+</html>

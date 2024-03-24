@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h3>
+      Write a JavaScript function that hides 2nd half of an email addresses before '@' and replaces it with '...' to prevent unauthorized access. <br> <br> (View the output in the console)
+    </h3>
+    <br />
+    <p>
+      Sample Test Data </br>
+      protect_email="robin_singh@example.com"</br>
+      Output="robin...@example.com" (View the output in the console)
+    </p>
+    <script>
+      protect_email = function (user_email) {
+        //Write your code here
+        let index = user_email.indexOf('@');
+        let user_name = user_email.slice(0, index);
+        let domain = user_email.slice(index);
+        user_name = user_name.slice(0, Math.floor(user_name.length/2)) + '...';
+
+        return user_name+domain;
+      };
+
+      console.log(protect_email("robin_singh@example.com"));//robin...@example.com
+      console.log(protect_email("neelima@example.com"));//nee...@example.com
+      console.log(protect_email("yippeeeeeeeeeee@example.com"));//yippeee...@example.com
+
+    </script>
+  </body>
+</html>

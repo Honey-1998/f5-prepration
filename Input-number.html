@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Addition</title>
+  <style>
+    #numbers-list {
+      list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+  <input type="number" id="number-input">
+  <button onclick="addNumber()">Add Number</button>
+  <ul id="numbers-list"></ul>
+
+  <script>
+    let numbers = [];
+
+    function addNumber() {
+      const inputField = document.getElementById('number-input');
+      const number = parseInt(inputField.value);
+
+      if (!isNaN(number)) {
+        const existingIndex = numbers.findIndex(num => Math.abs(num) === Math.abs(number));
+
+        if (existingIndex !== -1) {
+          numbers[existingIndex] = number;
+        } else {
+          numbers.push(number);
+        }
+
+        displayNumbers();
+        inputField.value = ''; // Clear input field
+      } else {
+        alert('Please enter a valid number.');
+      }
+    }
+
+    function displayNumbers() {
+      const listContainer = document.getElementById('numbers-list');
+      listContainer.innerHTML = ''; // Clear previous content
+
+      numbers.forEach(number => {
+        const listItem = document.createElement('li');
+        listItem.textContent = number;
+        listContainer.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+</html>

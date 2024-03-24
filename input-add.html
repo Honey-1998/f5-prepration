@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Input Fields Dynamically</title>
+    <style>
+        .input-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputFieldsContainer">
+        <div class="input-container">
+            <input type="text" name="input1" placeholder="Input 1">
+            <!--<input type="text" name="input2" placeholder="Input 2">-->
+        </div>
+    </div>
+    <button onclick="addInputField()">Add Input Field</button>
+
+    <script>
+        let counter = 1; // Start with 2 inputs
+
+        function addInputField() {
+            counter++;
+            const container = document.getElementById('inputFieldsContainer');
+            const newInputContainer = document.createElement('div');
+            newInputContainer.classList.add('input-container');
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'input' + counter;
+            newInput.placeholder = 'Input ' + counter;
+            newInputContainer.appendChild(newInput);
+            container.appendChild(newInputContainer);
+        }
+    </script>
+</body>
+</html>

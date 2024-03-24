@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h3>
+      Write a program to compare two objects to determine the first object contains equivalent property values to the second object in JavaScript. <br> <br>(View the output in console)
+    </h3>
+    <br />
+    <p>
+      Sample Inputs:<br />
+      Input: obj1: { name: "John", age: 23; degree: "CS" }</br>
+      &emsp;&emsp;&ensp; obj2: {age: 23, degree: "CS"}</br>
+      Output: true (View this output in console)
+    </br>
+  </br>
+</br>
+      Input: obj1: { name: "John", degree: "CS" }</br>
+      &emsp;&emsp;&ensp;obj2: {name: "Max", age: 23, degree: "CS"}</br>
+      
+      Output: false (View this output in console)
+
+    </p>
+    <script>
+// Define the first object
+let obj1 = {
+//Define first object
+  brand: "Tesla",
+  model: "X",
+  category: "dual-motor",
+  price: "$98490"
+}
+
+
+function check(obj1, obj2) {
+  for(let key in obj2){   //iterate through each keys in obj2
+    if(!obj1[key]) return false;   //check if key exists in obj1
+    else{
+      if(obj1[key] !== obj2[key]) return false;   //check if the values are same
+    }
+  }
+  return true;
+}
+
+// Call the function
+console.log(check(obj1, {brand: "Tesla"})); // True
+console.log(check(obj1, {model: "X"})); // True
+console.log(check(obj1, {brand: "Mercedes"})); // False
+console.log(check(obj1, {cost: "$98490"})); // False
+console.log(check(obj1, {category: "dual-motor", price: "$98490"})); // True
+console.log(check(obj1, {category: "dual-motor", cost: "$98490"})); // False
+    </script>
+  </body>
+</html>

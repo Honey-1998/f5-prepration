@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h3>
+      Write a Javascript program that takes 2 arrays as inputs and prints a 3rd array with only distinct values occuring in both arrays in ascending order. <br> <br> (View the output in the console)
+    </h3>
+    <br />
+    <p>
+      Sample array:<br />
+      const arr1 = [1, 2, 3, 4, 5]</br>
+      const arr2 = [1, 2, 3, 4]</br>
+      Expected Output: [1, 2, 3, 4, 5] (View the output in the console)
+    </p>
+    <script>
+      const print = (arr, arr2) => {
+     //Write your code here
+     const combinedArray = [...new Set([...arr1, ...arr2])];
+
+// Sort the combined array in ascending order
+     combinedArray.sort((a, b) => a - b);
+
+     return combinedArray;
+ }
+ console.log(print([1,2,3,4,5], [1,2,3,4])); // [1,2,3,4,5]
+ console.log(print([3,5,7,8], [5,3,6,7,8])); // [3,5,6,7,8]
+ console.log(print([2, 3, 8, 125], [3, 6, 9, 11, 15])); // [2,3,8,9,11,15,125]
+ console.log(print([1,1,1,2,2,2,3,3,3,9], [1,2,3,5,8])); // [1,2,3,5,8,9]
+    </script>
+  </body>
+</html>
+<!-- 
+
+const print = (arr, arr2) => {
+    //Write your code here
+    let ans = [];
+    let n1 = arr.length;
+    let n2 = arr2.length;
+    let i = 0;
+    let j = 0;
+    let k = 0;
+
+    while(i<n1 && j<n2){
+      if(arr[i]<arr2[j]) {
+        if(!ans.includes(arr[i])){
+          ans.push(arr[i++]);
+        }
+        else i++;              
+      }
+      else if(arr[i]>arr2[j]){
+        if(!ans.includes(arr2[j])){
+          ans.push(arr2[j++]);
+        }
+        else j++;
+      }
+      else {
+        if(!ans.includes(arr[i])){
+          ans.push(arr[i++]);
+        }
+        else i++;
+        j++;
+      }
+    }
+
+    while(i<n1){
+      if(!ans.includes(arr[i])){
+        ans.push(arr[i++]);
+      }
+      else i++;
+    }
+    while(j<n2){
+      if(!ans.includes(arr2[j])){
+        ans.push(arr2[j++]);
+      }
+      else j++;
+    }
+    return ans;
+  }
+  console.log(print([1,2,3,4,5], [1,2,3,4])); // [1,2,3,4,5]
+  console.log(print([3,5,7,8], [5,3,6,7,8])); // [3,5,6,7,8]
+  console.log(print([2, 3, 8, 125], [3, 6, 9, 11, 15])); // [2,3,8,9,11,15,125]
+  console.log(print([1,1,1,2,2,2,3,3,3,9], [1,2,3,5,8])); // [1,2,3,5,8,9] -->
